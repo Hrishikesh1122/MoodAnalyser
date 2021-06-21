@@ -10,21 +10,24 @@ package com.hrishikesh.moodAnalysis;
 public class MoodAnalyser {
 
 	/**
-	 * If message contains "Sad" it returns sad else it returns Happy If message is
-	 * Null it returns Happy
-	 * 
+	 * If message contains "Sad" it returns sad else it returns Happy
+	 * If message is empty it throws custom exception "ENTRED_EMPTY"
+	 * Else it returns Happy
 	 * @param message sent from test method
 	 * @return mood
+	 * @throws MoodAnalyserException 
 	 */
-	public String analyseMood(String message) {
+	public String analyseMood(String message) throws MoodAnalyserException {
 		try {
+			if(message.isEmpty())
+				throw  new MoodAnalyserException(MoodAnalyserException.exceptionType.ENTERED_EMPTY,"Please enter correct message");
 			if (message.contains("Sad") || message.contains("sad"))
 				return "Sad";
 			else
 				return "Happy";
 		} 
 		catch (NullPointerException e) {
-			return "Happy";
+			throw new MoodAnalyserException(MoodAnalyserException.exceptionType.ENTERED_NULL,"Please enter correct message");
 		}
 
 	}

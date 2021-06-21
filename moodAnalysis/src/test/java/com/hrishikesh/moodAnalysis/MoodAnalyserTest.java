@@ -1,7 +1,6 @@
 package com.hrishikesh.moodAnalysis;
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,9 +19,9 @@ public class MoodAnalyserTest {
 	}
 	
 	@Parameterized.Parameters
-	public static Collection myData() {
+	public static Collection<Object[]> myData() {
 		return Arrays.asList(new Object[][] {{"I am Sad","Sad"},{"I am Happy","Happy"},{"I am sad","Sad"},
-			{"He is happy","Happy"},{"sad sad SAAD","Sad"},{"Sad Happy sad Happy","Sad"},{null,"Happy"}});
+			{"He is happy","Happy"},{"sad sad SAAD","Sad"},{"Sad Happy sad Happy","Sad"}});
 	}	
 		
 	
@@ -35,8 +34,12 @@ public class MoodAnalyserTest {
 	
 	@Test
 	public void given_Message_ShouldReturnMood() {
-		String moodcheck =mood.analyseMood(input) ;
-		Assert.assertEquals(expectedResult, moodcheck);	
+		String moodcheck;
+			try {
+				moodcheck = mood.analyseMood(input);
+				Assert.assertEquals(expectedResult, moodcheck);
+			} catch (MoodAnalyserException e) {
+				e.printStackTrace();
+			}	
 	}
-
 }
