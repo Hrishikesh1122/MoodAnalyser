@@ -22,7 +22,7 @@ public class MoodAnalyserTest {
 	@Parameterized.Parameters
 	public static Collection myData() {
 		return Arrays.asList(new Object[][] {{"I am Sad","Sad"},{"I am Happy","Happy"},{"I am sad","Sad"},
-			{"He is happy","Happy"},{"sad sad SAAD","Sad"},{"Sad Happy sad Happy","Sad"}});
+			{"He is happy","Happy"},{"sad sad SAAD","Sad"},{"Sad Happy sad Happy","Sad"},{null,"Happy"}});
 	}	
 		
 	
